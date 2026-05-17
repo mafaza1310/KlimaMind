@@ -9,7 +9,9 @@ import os, warnings
 warnings.filterwarnings("ignore")
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-DATA_DIR   = os.path.join(SCRIPT_DIR, "data")
+# Look for data/ subfolder first, then fall back to script directory (for GitHub deployment)
+_data_sub = os.path.join(SCRIPT_DIR, "data")
+DATA_DIR = _data_sub if os.path.isdir(_data_sub) else SCRIPT_DIR
 
 # ── RENKLER ──────────────────────────────────────────────────────────
 RED   = "#8B0000"
